@@ -30,6 +30,7 @@ The reason is that, for example, after allow login at Facebook App, Facebook App
 ### Usage
 - Sort the plugins: `perl FlutterPluginSortObjC.pl`
 - Move plugin to the last: `perl FlutterPluginSortObjC.pl -last [plugin_name]`
+- Although the generated file says `Do not edit`, it is recommanded to sort it, and add it into `git` system, to make sure every build has the same code execution order.
 
 
 ### XCode Integration
