@@ -14,8 +14,8 @@ sub HandleARGV {
 	my $moveToLast;
 	if (scalar(@ARGV) == 2 && shift @ARGV eq "-last") {
 		$moveToLast = shift @ARGV;
+		print "Target to last: ", $moveToLast, "\n";
 	}
-	print "Target to last: ", $moveToLast, "\n";
 	return $moveToLast;
 }
 
@@ -26,16 +26,7 @@ sub AdjustOrder {
 	foreach (@$linesRef){
 		if (/^\s*}\s*$/) {
 			@plugins = sort @plugins;
-	
-			if (defined $moveToLast) {
-				my ($pluginFound) = grep(/$moveToLast registerWithRegistrar:/, @plugins);
-				print "Found: ", $pluginFound;
-				if (defined $pluginFound) {
-					@plugins = grep($_ ne $pluginFound, @plugins);
-					push @plugins, $pluginFound;
-				}
-			}
-						
+			@plugins = &MoveToLastIfNeeded(\@plugins, $moveToLast);
 			push @output, @plugins;
 			push @output, $_;
 		} elsif (/\[\w+ registerWithRegistrar:/) {
@@ -45,6 +36,22 @@ sub AdjustOrder {
 		}
 	}
 	return @output;
+}
+
+sub MoveToLastIfNeeded {
+	my ($pluginsRef, $moveToLast) = @_;
+	if (not defined $moveToLast) {
+		return @$pluginsRef;
+	}
+
+	my @plugins = @$pluginsRef;
+	my ($pluginFound) = grep(/$moveToLast registerWithRegistrar:/, @plugins);
+	if (defined $pluginFound) {
+		print "Found: ", $pluginFound;
+		@plugins = grep($_ ne $pluginFound, @plugins);
+		push @plugins, $pluginFound;
+	}
+	return @plugins;
 }
 
 sub Parse {
