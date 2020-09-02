@@ -28,9 +28,16 @@ The reason is that, for example, after allow login at Facebook App, Facebook App
 - Also the FirebaseDynamicLinks deeplink/universal link might also be incercepted by other plugin, and the deferred deep link will therefore be failed.
 
 ### Usage
-- Sort the plugins: `perl FlutterPluginSortObjC.pl`
-- Move plugin to the last: `perl FlutterPluginSortObjC.pl -last [plugin_name]`
-- Although the generated file says `Do not edit`, it is recommanded to sort it, and add it into `git` system, to make sure every build has the same code execution order.
+- Sort the plugins: 
+```
+perl FlutterPluginSortObjC.pl
+```
+
+- Move plugin to the last:
+```
+perl FlutterPluginSortObjC.pl -last [plugin_name]
+```
+- Add the sorted `GeneratedPluginRegistrant.m` into version-control system.
 
 
 ### XCode Integration
