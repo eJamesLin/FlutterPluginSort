@@ -12,7 +12,7 @@
   [APlugin registerWithRegistrar:[registry registrarForPlugin:@"APlugin"]];  
 }
 
-// sorted, and the deeplink plugin should be loaded as the last one
+// Sorted result, and the deeplink plugin should be loaded as the last one
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [APlugin registerWithRegistrar:[registry registrarForPlugin:@"APlugin"]];
   [BPlugin registerWithRegistrar:[registry registrarForPlugin:@"BPlugin"]];
