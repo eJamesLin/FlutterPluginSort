@@ -26,6 +26,7 @@
 - Due to this uncertainty, the 3rd-party login deeplink back to App might sometimes be failed. 
 The reason is that, for example, after allow login at `Facebook App`, `Facebook App` will try to launch the original App by deeplink, and bring back auth token along with it. But this deeplink, might be intercept by other flutter plugins, so `Facebook SDK` will never receive that deeplink, and the login action will be failed.
 - Also the `FirebaseDynamicLinks` deeplink/universal link might also be incercepted by other plugin, and the deferred deep link will therefore be failed.
+- More detail information is written at [this article](https://ejameslin.github.io/flutter-plugins-ordering/)
 
 ### Usage
 - Sort the plugins: 
