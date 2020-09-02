@@ -44,4 +44,4 @@ perl FlutterPluginSortObjC.pl -last [plugin_name]
 - At Xcode `Build Phases`, click the `Add New Run Script Phase`
 - Drag the run script before `Compile Sources`
 - Type the command `perl FlutterPluginSortObjC.pl`
-<image src=https://github.com/eJamesLin/FlutterPluginSort/blob/master/img/xcode-integration.png>
+<image src=https://github.com/eJamesLin/FlutterPluginSort/blob/master/image/xcode-integration.png>
